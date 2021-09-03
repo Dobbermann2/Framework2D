@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Framework2D.Graphics;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -19,7 +20,7 @@ namespace Framework2D
 
         }
 
-        public virtual void Draw()
+        public virtual void Draw(BatchRenderer batchRenderer)
         {
 
         }

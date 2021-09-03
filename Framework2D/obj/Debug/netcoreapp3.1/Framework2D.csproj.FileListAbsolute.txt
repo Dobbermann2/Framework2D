@@ -7,3 +7,12 @@ C:\Users\luukv\source\repos\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Fram
 C:\Users\luukv\source\repos\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.csproj.CoreCompileInputs.cache
 C:\Users\luukv\source\repos\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.dll
 C:\Users\luukv\source\repos\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.pdb
+C:\Users\luukv\Documents\Framework2D\Framework2D\bin\Debug\netcoreapp3.1\Framework2D.deps.json
+C:\Users\luukv\Documents\Framework2D\Framework2D\bin\Debug\netcoreapp3.1\Framework2D.dll
+C:\Users\luukv\Documents\Framework2D\Framework2D\bin\Debug\netcoreapp3.1\Framework2D.pdb
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.csprojAssemblyReference.cache
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.AssemblyInfoInputs.cache
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.AssemblyInfo.cs
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.dll
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.pdb
+C:\Users\luukv\Documents\Framework2D\Framework2D\obj\Debug\netcoreapp3.1\Framework2D.csproj.CoreCompileInputs.cache

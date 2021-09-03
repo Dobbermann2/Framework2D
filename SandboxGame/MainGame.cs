@@ -1,6 +1,7 @@
 ﻿using System;
 
 using Framework2D;
+using Framework2D.Graphics;
 
 namespace SandboxGame
 {
@@ -16,9 +17,14 @@ namespace SandboxGame
             base.Update();
         }
 
-        public override void Draw()
+        public override void Draw(BatchRenderer batchRenderer)
         {
-            base.Draw();
+            batchRenderer.Begin();
+            batchRenderer.Draw(null, OpenTK.Mathematics.Vector2.One*2);
+            batchRenderer.Draw(null, OpenTK.Mathematics.Vector2.One * 0);
+
+            batchRenderer.End();
+            base.Draw(batchRenderer);
         }
     }
 

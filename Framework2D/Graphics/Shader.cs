@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Text;
 
 using OpenTK.Graphics.OpenGL4;
+using OpenTK.Mathematics;
 
 namespace Framework2D.Graphics
 {
@@ -45,7 +47,7 @@ namespace Framework2D.Graphics
 
         internal int LoadShader(ShaderType type, string source)
         {
-            source = File.ReadAllText((Environment.CurrentDirectory + source));
+            source = File.ReadAllText((Environment.CurrentDirectory + "/"+ source));
             int shaderHandle = GL.CreateShader(type);
             GL.ShaderSource(shaderHandle, source);
             GL.CompileShader(shaderHandle);
@@ -71,6 +73,12 @@ namespace Framework2D.Graphics
         internal int GetHandle()
         {
             return handle;
+        }
+
+        internal void SetUniformMat4(Matrix4 mat, string location)
+        {
+            int loc = GL.GetUniformLocation(GetHandle(), location);
+            GL.UniformMatrix4(loc, false, ref mat);
         }
     }
 }
