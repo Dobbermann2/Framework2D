@@ -519,11 +519,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luukv\\Documents\\Framework2D\\SandboxGame\\SandboxGame.csproj",
+      "projectUniqueName": "C:\\Users\\luukv\\source\\repos\\Framework2D\\SandboxGame\\SandboxGame.csproj",
       "projectName": "SandboxGame",
-      "projectPath": "C:\\Users\\luukv\\Documents\\Framework2D\\SandboxGame\\SandboxGame.csproj",
+      "projectPath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\SandboxGame\\SandboxGame.csproj",
       "packagesPath": "C:\\Users\\luukv\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luukv\\Documents\\Framework2D\\SandboxGame\\obj\\",
+      "outputPath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\SandboxGame\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -542,9 +542,10 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "projectReferences": {
-            "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj": {
-              "projectPath": "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj"
+            "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj": {
+              "projectPath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj"
             }
           }
         }
@@ -557,6 +558,7 @@
     },
     "frameworks": {
       "netcoreapp3.1": {
+        "targetAlias": "netcoreapp3.1",
         "imports": [
           "net461",
           "net462",
@@ -572,7 +574,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
       }
     }
   }

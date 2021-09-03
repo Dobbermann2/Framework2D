@@ -15,6 +15,11 @@ namespace Framework2D
             //Initialize framework here
         }
 
+        public virtual void Initialize()
+        {
+
+        }
+
         public virtual void Update()
         {
 

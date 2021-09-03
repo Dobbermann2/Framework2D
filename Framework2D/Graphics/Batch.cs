@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Text;
 
 using OpenTK.Graphics.OpenGL4;
+using System.Linq;
 
 namespace Framework2D.Graphics
 {
@@ -34,25 +35,44 @@ namespace Framework2D.Graphics
         int IB;
 
         //(TextureID, List<BatchItem>)
-        Dictionary<int, List<BatchItem>> batchItems;
+        List<TextureSlot> batchItems;
 
         public Batch()
         {
-            batchItems = new Dictionary<int, List<BatchItem>>();
+            batchItems = new List<TextureSlot>();
             GenerateBuffers();
         }
 
         public bool AddItem(BatchItem item)
         {
-            //if ((!batchItems.ContainsKey(item.Texture.Handle) && batchItems.Count >= MAX_TEXTURES) || quadCount >= MAX_QUADS) return false;
-            //if(!batchItems.ContainsKey(item.Texture.Handle))
-            //{
-            //    batchItems.Add(item.Texture.Handle, new List<BatchItem>());
-            //}
-            if(!batchItems.ContainsKey(0))batchItems.Add(0, new List<BatchItem>());
-            batchItems[0].Add(item);
+            if (quadCount >= MAX_QUADS) return false;
+            //TextureSlot[] slot = batchItems.Where(x => x.textureID == item.Texture.Handle).ToArray();
+            //bool exists = slot.Length > 0;
+
+
+
+            for(int i = 0; i < batchItems.Count; i++)
+            {
+                if(batchItems[i].textureID == item.Texture.Handle)
+                {
+                    batchItems[i].batchItems.Add(item);
+                    quadCount++;
+                    return true;
+                }
+            }
+            if (batchItems.Count >= MAX_TEXTURES) return false;
+            batchItems.Add(new TextureSlot(item.Texture.Handle));
+            batchItems[batchItems.Count - 1].batchItems.Add(item);
             quadCount++;
             return true;
+
+            //if ((!exists && batchItems.Count >= MAX_TEXTURES) || quadCount >= MAX_QUADS) return false;
+            //if (!exists)
+            //{
+            //    batchItems.Add(new TextureSlot(item.Texture.Handle));
+            //}
+            //batchItems[slot[0].textureID].Add(item);
+            //quadCount++;
         }
 
         //Build index buffer from batch items
@@ -61,23 +81,41 @@ namespace Framework2D.Graphics
             int quadVPointer = 0;
             int quadIPointer = 0;
 
-            foreach (List<BatchItem> items in batchItems.Values)
+            foreach (TextureSlot texSlot in batchItems)
             {
-                foreach(BatchItem item in items)
+                foreach(BatchItem item in texSlot.batchItems)
                 {
                     //TODO: Implement depth
                     float depth = 0;
-                    vertices[quadVPointer + 0] = new Vertex() { position = new Vector3(item.Position.X, item.Position.Y, depth) };
-                    vertices[quadVPointer + 1] = new Vertex() { position = new Vector3(item.Position.X + item.Size.X, item.Position.Y, depth) };
-                    vertices[quadVPointer + 2] = new Vertex() { position = new Vector3(item.Position.X +item.Size.X, item.Position.Y + item.Size.Y, depth) };
-                    vertices[quadVPointer + 3] = new Vertex() { position = new Vector3(item.Position.X, item.Position.Y + item.Size.Y, depth) };
+                    vertices[quadVPointer + 0] = new Vertex() { 
+                        position = new Vector3(item.Position.X, item.Position.Y, depth),
+                        texCoord = new Vector2(0.0f, 0.0f),
+                        texSlot = texSlot.textureID};
 
-                    indices[quadIPointer + 0] = quadIPointer + 0;
-                    indices[quadIPointer + 1] = quadIPointer + 1;
-                    indices[quadIPointer + 2] = quadIPointer + 2;
-                    indices[quadIPointer + 3] = quadIPointer + 2;
-                    indices[quadIPointer + 4] = quadIPointer + 3;
-                    indices[quadIPointer + 5] = quadIPointer + 0;
+                    vertices[quadVPointer + 1] = new Vertex() { 
+                        position = new Vector3(item.Position.X + item.Size.X, item.Position.Y, depth),                         
+                        texCoord = new Vector2(1f, 0.0f),
+                        texSlot = texSlot.textureID
+                    };
+
+                    vertices[quadVPointer + 2] = new Vertex() {
+                        position = new Vector3(item.Position.X + item.Size.X, item.Position.Y + item.Size.Y, depth),
+                        texCoord = new Vector2(1f, 1f),
+                        texSlot = texSlot.textureID 
+                    };
+                    vertices[quadVPointer + 3] = new Vertex() { 
+                        position = new Vector3(item.Position.X, item.Position.Y + item.Size.Y, depth),
+                        texCoord = new Vector2(0.0f, 1.0f),
+                        texSlot = texSlot.textureID
+                    };
+            
+
+                    indices[quadIPointer + 0] = quadVPointer + 0;
+                    indices[quadIPointer + 1] = quadVPointer + 1;
+                    indices[quadIPointer + 2] = quadVPointer + 2;
+                    indices[quadIPointer + 3] = quadVPointer + 2;
+                    indices[quadIPointer + 4] = quadVPointer + 3;
+                    indices[quadIPointer + 5] = quadVPointer + 0;
 
                     quadVPointer += 4;
                     quadIPointer += 6;
@@ -89,13 +127,15 @@ namespace Framework2D.Graphics
             batchItems.Clear();
         }
 
-        public void BindTextures()
+        public void BindTextures(int shaderHandle)
         {
             int c = 0;
-            foreach(int tex in batchItems.Keys)
+            foreach(TextureSlot tex in batchItems)
             {
+                int texID = tex.textureID;
                 GL.ActiveTexture(TextureUnit.Texture0 + c);
-                GL.BindTexture(TextureTarget.Texture2D, tex);
+                GL.BindTexture(TextureTarget.Texture2D, texID);
+                GL.Uniform1(GL.GetUniformLocation(shaderHandle, "textures[" + c + "]"), c);
                 c++;
             }
         }
@@ -112,10 +152,28 @@ namespace Framework2D.Graphics
             GL.EnableVertexArrayAttrib(VA, 0);
             GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
 
+            GL.EnableVertexArrayAttrib(VA, 1);
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), 0);
+
+
+            GL.EnableVertexArrayAttrib(VA, 2);
+            GL.VertexAttribPointer(2, 1, VertexAttribPointerType.Int, false, 1 * sizeof(int), 0);
             GL.CreateBuffers(1, out IB);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, IB);
             GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * MAX_INDICES, IntPtr.Zero, BufferUsageHint.DynamicDraw);
         }
+    }
 
+
+    public struct TextureSlot
+    {
+        public int textureID;
+        public List<BatchItem> batchItems;
+
+        public TextureSlot(int textureID)
+        {
+            this.textureID = textureID;
+            batchItems = new List<BatchItem>();
+        }
     }
 }

@@ -17,7 +17,8 @@ namespace Framework2D
         {
             GL.Viewport(0,0,width, height);
             this.game = game;
-            this.batchRenderer = new BatchRenderer();
+            this.batchRenderer = new BatchRenderer(width, height);
+            game.Initialize();
             Run();
         }
 

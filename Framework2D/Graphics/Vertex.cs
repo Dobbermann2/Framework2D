@@ -10,6 +10,8 @@ namespace Framework2D.Graphics
     public struct Vertex
     {
         public Vector3 position;
+        public Vector2 texCoord;
+        public int texSlot;
 
         public static int Size
         {

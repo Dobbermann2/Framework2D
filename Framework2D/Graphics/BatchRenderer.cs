@@ -24,10 +24,10 @@ namespace Framework2D.Graphics
         bool begin = false;
         bool end = true;
 
-        public BatchRenderer()
+        public BatchRenderer(int width, int height)
         {
             defaultShader = new Shader("vUnlit.glsl", "fUnlit.glsl");
-            projectionMatrix = Matrix4.CreateOrthographicOffCenter(0, 1 * 5, 720 / 1280f * 5, 0, 0.0f, 100f);
+            projectionMatrix = Matrix4.CreateOrthographicOffCenter(0, width, height, 0, 0.0f, 100f);
         }
 
 
@@ -49,23 +49,6 @@ namespace Framework2D.Graphics
                 Scale = Vector2.One,
                 Position = position
             }) ;
-
-
-
-
-
-            //GL.Clear(ClearBufferMask.ColorBufferBit);
-
-            //defaultShader.Use();
-            //defaultShader.SetUniformMat4(Matrix4.CreateOrthographic(1 * 5, 720 / 1280f * 5, 0.0f, 100f), "projection");
-
-
-            //GL.BindVertexArray(VA);
-            //GL.DrawElements(BeginMode.Triangles, 6, DrawElementsType.UnsignedInt, 0);
-            //OpenGL render stuff
-            
-
-
         }
 
         public void End()
@@ -78,7 +61,7 @@ namespace Framework2D.Graphics
             batch.Finish();
             defaultShader.Use();
             defaultShader.SetUniformMat4(ProjectionMatrix, "projection");
-            //batch.BindTextures();
+            batch.BindTextures(defaultShader.GetHandle());
 
             GL.BindVertexArray(batch.VA);
             GL.DrawElements(BeginMode.Triangles, batch.quadCount*6, DrawElementsType.UnsignedInt, 0);
@@ -89,19 +72,5 @@ namespace Framework2D.Graphics
             batch = new Batch();
 
         }
-
-
-        float[] vertices =
-        {
-            -0.5f, -0.5f, 0.0f,
-            0.5f, -0.5f, 0.0f,
-            0.5f, 0.5f, 0.0f,
-            -0.5f, 0.5f, 0.0f
-        };
-
-        int[] indices =
-        {
-            0, 1, 2, 2, 3, 0
-        };
     }
 }

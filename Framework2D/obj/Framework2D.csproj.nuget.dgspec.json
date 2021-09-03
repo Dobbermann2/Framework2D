@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj": {}
+    "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj": {}
   },
   "projects": {
-    "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj": {
+    "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj",
+        "projectUniqueName": "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj",
         "projectName": "Framework2D",
-        "projectPath": "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\Framework2D.csproj",
+        "projectPath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj",
         "packagesPath": "C:\\Users\\luukv\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\luukv\\Documents\\Framework2D\\Framework2D\\obj\\",
+        "outputPath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\"
@@ -30,6 +30,7 @@
         },
         "frameworks": {
           "netcoreapp3.1": {
+            "targetAlias": "netcoreapp3.1",
             "projectReferences": {}
           }
         },
@@ -41,6 +42,7 @@
       },
       "frameworks": {
         "netcoreapp3.1": {
+          "targetAlias": "netcoreapp3.1",
           "dependencies": {
             "OpenTK": {
               "target": "Package",
@@ -66,7 +68,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.401\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.103\\RuntimeIdentifierGraph.json"
         }
       }
     }

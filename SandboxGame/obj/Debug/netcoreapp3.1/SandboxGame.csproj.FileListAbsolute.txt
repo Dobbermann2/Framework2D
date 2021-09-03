@@ -63,3 +63,8 @@ C:\Users\luukv\Documents\Framework2D\SandboxGame\obj\Debug\netcoreapp3.1\Sandbox
 C:\Users\luukv\Documents\Framework2D\SandboxGame\obj\Debug\netcoreapp3.1\SandboxGame.dll
 C:\Users\luukv\Documents\Framework2D\SandboxGame\obj\Debug\netcoreapp3.1\SandboxGame.pdb
 C:\Users\luukv\Documents\Framework2D\SandboxGame\obj\Debug\netcoreapp3.1\SandboxGame.genruntimeconfig.cache
+C:\Users\luukv\source\repos\Framework2D\SandboxGame\bin\Debug\netcoreapp3.1\Microsoft.Win32.SystemEvents.dll
+C:\Users\luukv\source\repos\Framework2D\SandboxGame\bin\Debug\netcoreapp3.1\System.Drawing.Common.dll
+C:\Users\luukv\source\repos\Framework2D\SandboxGame\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\Microsoft.Win32.SystemEvents.dll
+C:\Users\luukv\source\repos\Framework2D\SandboxGame\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp3.0\System.Drawing.Common.dll
+C:\Users\luukv\source\repos\Framework2D\SandboxGame\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp3.0\System.Drawing.Common.dll

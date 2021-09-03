@@ -33,7 +33,7 @@ namespace Framework2D.Graphics
 
             int width = bitmap.Width;
             int height = bitmap.Height;
-
+            size = new Vector2(width, height);
             BitmapData data = bitmap.LockBits(new Rectangle(0, 0, width, height), System.Drawing.Imaging.ImageLockMode.ReadOnly, System.Drawing.Imaging.PixelFormat.Format32bppArgb);
 
             GenerateTexture(data.Scan0, width, height);
