@@ -7,12 +7,9 @@ namespace Framework2D
 {
     public class Game
     {
-        private Core core;
-
         public Game(int width, int height, string title)
         {
-            core = new Core(this, width, height, title);
-            //Initialize framework here
+            Core core = new Core(this, width, height, title);
         }
 
         public virtual void Initialize()
@@ -20,7 +17,7 @@ namespace Framework2D
 
         }
 
-        public virtual void Update()
+        public virtual void Update(float deltaTime)
         {
 
         }

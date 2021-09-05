@@ -3,10 +3,10 @@
 out vec4 outputColor;
 
 in vec2 texCoord;
-flat in int texSlot;
-uniform sampler2D textures[5];
+in float texSlot;
+uniform sampler2D textures[10];
 
 void main()
 {
-    outputColor = texture(textures[texSlot], texCoord);
+    outputColor = texture(textures[int(texSlot)], texCoord);
 }

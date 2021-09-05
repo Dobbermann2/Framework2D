@@ -10,8 +10,8 @@ namespace Framework2D.Graphics
 {
     public class Batch
     {
-        const int MAX_TEXTURES = 5;
-        const int MAX_QUADS = 100;
+        const int MAX_TEXTURES = 10;
+        const int MAX_QUADS = 10000;
         const int MAX_VERTICES = MAX_QUADS * 4;
         const int MAX_INDICES = MAX_QUADS * 6;
 
@@ -34,7 +34,6 @@ namespace Framework2D.Graphics
         int VB;
         int IB;
 
-        //(TextureID, List<BatchItem>)
         List<TextureSlot> batchItems;
 
         public Batch()
@@ -45,11 +44,8 @@ namespace Framework2D.Graphics
 
         public bool AddItem(BatchItem item)
         {
-            if (quadCount >= MAX_QUADS) return false;
-            //TextureSlot[] slot = batchItems.Where(x => x.textureID == item.Texture.Handle).ToArray();
-            //bool exists = slot.Length > 0;
-
-
+            if (quadCount >= MAX_QUADS)
+                return false;
 
             for(int i = 0; i < batchItems.Count; i++)
             {
@@ -60,53 +56,47 @@ namespace Framework2D.Graphics
                     return true;
                 }
             }
+
             if (batchItems.Count >= MAX_TEXTURES) return false;
             batchItems.Add(new TextureSlot(item.Texture.Handle));
             batchItems[batchItems.Count - 1].batchItems.Add(item);
             quadCount++;
             return true;
-
-            //if ((!exists && batchItems.Count >= MAX_TEXTURES) || quadCount >= MAX_QUADS) return false;
-            //if (!exists)
-            //{
-            //    batchItems.Add(new TextureSlot(item.Texture.Handle));
-            //}
-            //batchItems[slot[0].textureID].Add(item);
-            //quadCount++;
         }
 
-        //Build index buffer from batch items
         public void Finish()
         {
             int quadVPointer = 0;
             int quadIPointer = 0;
-
+            int texSlotIndex = 0;
             foreach (TextureSlot texSlot in batchItems)
             {
                 foreach(BatchItem item in texSlot.batchItems)
                 {
-                    //TODO: Implement depth
+                    Vector3[] quadVertices = CreateOriginOffset(item.Origin);
+                    Matrix4 transformMatrix = item.TransformMatrix;
                     float depth = 0;
                     vertices[quadVPointer + 0] = new Vertex() { 
-                        position = new Vector3(item.Position.X, item.Position.Y, depth),
-                        texCoord = new Vector2(0.0f, 0.0f),
-                        texSlot = texSlot.textureID};
+                        position = Vector3.TransformPosition(quadVertices[0], transformMatrix),
+                        texCoord = item.TexCoords[0],
+                        texSlot = texSlotIndex
+                    };
 
-                    vertices[quadVPointer + 1] = new Vertex() { 
-                        position = new Vector3(item.Position.X + item.Size.X, item.Position.Y, depth),                         
-                        texCoord = new Vector2(1f, 0.0f),
-                        texSlot = texSlot.textureID
+                    vertices[quadVPointer + 1] = new Vertex() {
+                        position = Vector3.TransformPosition(quadVertices[1], transformMatrix),
+                        texCoord = item.TexCoords[1],
+                        texSlot = texSlotIndex
                     };
 
                     vertices[quadVPointer + 2] = new Vertex() {
-                        position = new Vector3(item.Position.X + item.Size.X, item.Position.Y + item.Size.Y, depth),
-                        texCoord = new Vector2(1f, 1f),
-                        texSlot = texSlot.textureID 
+                        position = Vector3.TransformPosition(quadVertices[2], transformMatrix),
+                        texCoord = item.TexCoords[2],
+                        texSlot = texSlotIndex
                     };
-                    vertices[quadVPointer + 3] = new Vertex() { 
-                        position = new Vector3(item.Position.X, item.Position.Y + item.Size.Y, depth),
-                        texCoord = new Vector2(0.0f, 1.0f),
-                        texSlot = texSlot.textureID
+                    vertices[quadVPointer + 3] = new Vertex() {
+                        position = Vector3.TransformPosition(quadVertices[3], transformMatrix),
+                        texCoord = item.TexCoords[3],
+                        texSlot = texSlotIndex
                     };
             
 
@@ -120,11 +110,18 @@ namespace Framework2D.Graphics
                     quadVPointer += 4;
                     quadIPointer += 6;
                 }
+                texSlotIndex++;
             }
+            GL.BindBuffer(BufferTarget.ArrayBuffer, VB);
+            GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, quadCount * 4 * Vertex.Size, vertices);
+            GL.BindBuffer(BufferTarget.ElementArrayBuffer, IB);
+            GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, quadCount*6* sizeof(int), indices);
+        }
 
-            GL.BufferSubData(BufferTarget.ArrayBuffer, IntPtr.Zero, vertices.Length * Vertex.Size, vertices);
-            GL.BufferSubData(BufferTarget.ElementArrayBuffer, IntPtr.Zero, indices.Length * sizeof(int), indices);
+        public void Reset()
+        {
             batchItems.Clear();
+            quadCount = 0;
         }
 
         public void BindTextures(int shaderHandle)
@@ -150,20 +147,30 @@ namespace Framework2D.Graphics
             GL.BufferData(BufferTarget.ArrayBuffer, Vertex.Size * MAX_VERTICES, IntPtr.Zero, BufferUsageHint.DynamicDraw);
 
             GL.EnableVertexArrayAttrib(VA, 0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 5 * sizeof(float)+ 1 * sizeof(int), 0);
 
             GL.EnableVertexArrayAttrib(VA, 1);
-            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 2 * sizeof(float), 0);
-
+            GL.VertexAttribPointer(1, 2, VertexAttribPointerType.Float, false, 5 * sizeof(float)+ 1 * sizeof(int), 3*sizeof(float));
 
             GL.EnableVertexArrayAttrib(VA, 2);
-            GL.VertexAttribPointer(2, 1, VertexAttribPointerType.Int, false, 1 * sizeof(int), 0);
+            GL.VertexAttribPointer(2, 1, VertexAttribPointerType.Float, false, 5 * sizeof(float)+ 1 * sizeof(float), 5*sizeof(float));
+
             GL.CreateBuffers(1, out IB);
             GL.BindBuffer(BufferTarget.ElementArrayBuffer, IB);
             GL.BufferData(BufferTarget.ElementArrayBuffer, sizeof(int) * MAX_INDICES, IntPtr.Zero, BufferUsageHint.DynamicDraw);
         }
-    }
 
+        private Vector3[] CreateOriginOffset(Vector2 origin)
+        {
+            return new Vector3[4]
+            {
+                new Vector3(-origin.X, -origin.Y, 0.0f),
+                new Vector3(1f-origin.X, -origin.Y, 0.0f),
+                new Vector3(1f-origin.X, 1f-origin.Y, 0.0f),
+                new Vector3(-origin.X, 1f-origin.Y, 0.0f),
+            };
+        }
+    }
 
     public struct TextureSlot
     {

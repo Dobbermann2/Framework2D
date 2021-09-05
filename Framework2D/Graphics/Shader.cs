@@ -36,7 +36,6 @@ namespace Framework2D.Graphics
             {
                 // We can use `GL.GetProgramInfoLog(program)` to get information about the error.
                 throw new Exception($"Error occurred whilst linking Program({handle}): " + GL.GetProgramInfoLog(handle));
-
             }
 
             GL.DetachShader(handle, vs);
@@ -59,8 +58,6 @@ namespace Framework2D.Graphics
                 var infoLog = GL.GetShaderInfoLog(shaderHandle);
                 throw new Exception($"Error occurred whilst compiling Shader({shaderHandle}).\n\n{infoLog}");
             }
-
-            //Console.WriteLine(GL.GetShaderInfoLog(shaderHandle));
 
             return shaderHandle;
         }

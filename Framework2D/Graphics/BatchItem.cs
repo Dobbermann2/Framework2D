@@ -7,19 +7,27 @@ namespace Framework2D.Graphics
 {
     public struct BatchItem
     {
-        public Texture2D Texture;
-        public Vector2 Position;
-        public Vector2 Scale;
-        public float Angle;
+        public Texture2D Texture { get; set; }
+        public Vector2 Position { get; set; }
+        public Vector2 Scale { get; set; }
+        public float Angle { get; set; }
+        public Vector2 Origin { get; set; }
+        public Vector2[] TexCoords { get; set; }
 
         public Vector2 Size
         {
             get
             {
                 if(Texture != null)
-                return Texture.Size * Scale;
-                return Scale;
+                return (TexCoords[2] * Texture.Size - TexCoords[0] * Texture.Size) * Scale;
+                return Vector2.Zero;
             }
         }
+
+        public Matrix4 TransformMatrix
+        {
+            get { return  Matrix4.CreateScale(new Vector3(Size.X * Scale.X, Size.Y * Scale.Y, 0)) * Matrix4.CreateRotationZ(Angle) * Matrix4.CreateTranslation(new Vector3(Position)); }
+        }
+
     }
 }

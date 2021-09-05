@@ -11,7 +11,7 @@ namespace Framework2D.Graphics
     {
         public Vector3 position;
         public Vector2 texCoord;
-        public int texSlot;
+        public float texSlot;
 
         public static int Size
         {
