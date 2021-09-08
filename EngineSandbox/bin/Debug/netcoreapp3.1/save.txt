@@ -1,8 +1,8 @@
 {
   "TransformComponent": {
     "eID": 1,
-    "pX": 71.14052,
-    "pY": 123.09726,
+    "pX": 316.2661,
+    "pY": 183.05893,
     "sX": 1.0,
     "sY": 1.0,
     "R": 0.0
@@ -10,5 +10,9 @@
   "SpriteComponent": {
     "eID": 1,
     "texS": "textureA.png"
+  },
+  "ScriptComponent": {
+    "eID": 1,
+    "script": "PlayerController.cs"
   }
 }

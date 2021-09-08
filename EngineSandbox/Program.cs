@@ -27,7 +27,7 @@ namespace EngineSandbox
             SpriteComponent spriteComp = e.AddComponent<SpriteComponent>();
             spriteComp.Texture = AssetManager.LoadTexture2D("textureA.png");
 
-            e.AddComponent<ScriptComponent>().Script = new PlayerController();
+            e.AddComponent<ScriptComponent>().SetScript("PlayerController.cs");
         }
     }
 }

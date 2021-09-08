@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "OTyYteJRW1TZ9pgYE6GpxkmLeThqI0JB1dtmSxqFI6sywSvczeZl7gLNAl4Jis9xb3YjdhGJ1vx7QaEs0MUUgQ==",
+  "dgSpecHash": "//GMJg7I//k5b9+j2LE0uZDoyVcNLqAS0ujlREahF0gNJqUDLBKgMt//Ddg1pCqC5lovG9BAjG7wK4hP6Dia8Q==",
   "success": true,
   "projectFilePath": "C:\\Users\\luukv\\source\\repos\\Framework2D\\Framework2D\\Framework2D.csproj",
   "expectedPackageFiles": [
@@ -17,6 +17,7 @@
     "C:\\Users\\luukv\\.nuget\\packages\\opentk.windowing.common\\4.6.4\\opentk.windowing.common.4.6.4.nupkg.sha512",
     "C:\\Users\\luukv\\.nuget\\packages\\opentk.windowing.desktop\\4.6.4\\opentk.windowing.desktop.4.6.4.nupkg.sha512",
     "C:\\Users\\luukv\\.nuget\\packages\\opentk.windowing.graphicslibraryframework\\4.6.4\\opentk.windowing.graphicslibraryframework.4.6.4.nupkg.sha512",
+    "C:\\Users\\luukv\\.nuget\\packages\\system.codedom\\5.0.0\\system.codedom.5.0.0.nupkg.sha512",
     "C:\\Users\\luukv\\.nuget\\packages\\system.drawing.common\\5.0.2\\system.drawing.common.5.0.2.nupkg.sha512",
     "C:\\Users\\luukv\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\5.0.0\\system.runtime.compilerservices.unsafe.5.0.0.nupkg.sha512"
   ],

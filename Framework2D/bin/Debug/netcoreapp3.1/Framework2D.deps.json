@@ -9,6 +9,7 @@
       "Framework2D/1.0.0": {
         "dependencies": {
           "OpenTK": "4.6.4",
+          "System.CodeDom": "5.0.0",
           "System.Drawing.Common": "5.0.2"
         },
         "runtime": {
@@ -169,6 +170,14 @@
           }
         }
       },
+      "System.CodeDom/5.0.0": {
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {
+            "assemblyVersion": "5.0.0.0",
+            "fileVersion": "5.0.20.51904"
+          }
+        }
+      },
       "System.Drawing.Common/5.0.2": {
         "dependencies": {
           "Microsoft.Win32.SystemEvents": "5.0.0"
@@ -300,6 +309,13 @@
       "sha512": "sha512-8OcWXEQmOs5TncD5cCpmDO3N9maBanGZPKast7byL0HoelX+Knq3WZ0bf9ieRnDkM3ivMwW2eaBpelJdHxPKRg==",
       "path": "opentk.windowing.graphicslibraryframework/4.6.4",
       "hashPath": "opentk.windowing.graphicslibraryframework.4.6.4.nupkg.sha512"
+    },
+    "System.CodeDom/5.0.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-JPJArwA1kdj8qDAkY2XGjSWoYnqiM7q/3yRNkt6n28Mnn95MuEGkZXUbPBf7qc3IjwrGY5ttQon7yqHZyQJmOQ==",
+      "path": "system.codedom/5.0.0",
+      "hashPath": "system.codedom.5.0.0.nupkg.sha512"
     },
     "System.Drawing.Common/5.0.2": {
       "type": "package",

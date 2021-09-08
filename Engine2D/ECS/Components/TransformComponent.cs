@@ -1,8 +1,5 @@
 ﻿using Newtonsoft.Json.Linq;
 using OpenTK.Mathematics;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Engine2D
 {

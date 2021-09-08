@@ -34,7 +34,6 @@ namespace Engine2D.Serialization
             string json = File.ReadAllText("save.txt");
             JObject obj = JObject.Parse(json);
 
-
             foreach (var x in obj)
             {
                 DeserializeComponent(x.Key, (JObject) x.Value, scene);
@@ -56,6 +55,10 @@ namespace Engine2D.Serialization
 
                 case "TagComponent":
                     entity.AddComponent<TagComponent>().Deserialize(obj);
+                    break;
+
+                case "ScriptComponent":
+                    entity.AddComponent<ScriptComponent>().Deserialize(obj);
                     break;
             }
         }

@@ -170,6 +170,15 @@
           "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.dll": {}
         }
       },
+      "System.CodeDom/5.0.0": {
+        "type": "package",
+        "compile": {
+          "ref/netstandard2.0/System.CodeDom.dll": {}
+        },
+        "runtime": {
+          "lib/netstandard2.0/System.CodeDom.dll": {}
+        }
+      },
       "System.Drawing.Common/5.0.2": {
         "type": "package",
         "dependencies": {
@@ -206,6 +215,7 @@
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
           "OpenTK": "4.6.4",
+          "System.CodeDom": "5.0.0",
           "System.Drawing.Common": "5.0.2"
         },
         "compile": {
@@ -425,6 +435,30 @@
         "lib/netcoreapp3.1/OpenTK.Windowing.GraphicsLibraryFramework.xml",
         "opentk.windowing.graphicslibraryframework.4.6.4.nupkg.sha512",
         "opentk.windowing.graphicslibraryframework.nuspec"
+      ]
+    },
+    "System.CodeDom/5.0.0": {
+      "sha512": "JPJArwA1kdj8qDAkY2XGjSWoYnqiM7q/3yRNkt6n28Mnn95MuEGkZXUbPBf7qc3IjwrGY5ttQon7yqHZyQJmOQ==",
+      "type": "package",
+      "path": "system.codedom/5.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "LICENSE.TXT",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net461/System.CodeDom.dll",
+        "lib/net461/System.CodeDom.xml",
+        "lib/netstandard2.0/System.CodeDom.dll",
+        "lib/netstandard2.0/System.CodeDom.xml",
+        "ref/net461/System.CodeDom.dll",
+        "ref/net461/System.CodeDom.xml",
+        "ref/netstandard2.0/System.CodeDom.dll",
+        "ref/netstandard2.0/System.CodeDom.xml",
+        "system.codedom.5.0.0.nupkg.sha512",
+        "system.codedom.nuspec",
+        "useSharedDesignerContext.txt",
+        "version.txt"
       ]
     },
     "System.Drawing.Common/5.0.2": {
