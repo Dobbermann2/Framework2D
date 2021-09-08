@@ -22,7 +22,7 @@ A 2D game framework using OpenGL (inspired by Monogame)
 
 Framework2D:
   - Game Loop
-  - Fast batch rendering
+  - OpenGL batch renderer
   - Texture batching
   - Spritesheet support
   - [Wip] Asset management (Currently only textures)
