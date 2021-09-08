@@ -44,3 +44,4 @@ Engine2D:
   - Game Editor with UI
   - Game Editor build pipeline
   - Sound
+  - Pooled particle system
