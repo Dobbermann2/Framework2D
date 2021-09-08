@@ -1,5 +1,5 @@
 # Framework2D
-A 2D game framework using OpenTK inspired by Monogame
+A 2D game framework using OpenGL (inspired by Monogame)
 
 
 ## Project layout ##
