@@ -30,11 +30,9 @@ namespace Framework2D.Graphics
             GL.AttachShader(handle, fs);
             GL.LinkProgram(handle);
 
-            // Check for linking errors
             GL.GetProgram(handle, GetProgramParameterName.LinkStatus, out var code);
             if (code != (int)All.True)
             {
-                // We can use `GL.GetProgramInfoLog(program)` to get information about the error.
                 throw new Exception($"Error occurred whilst linking Program({handle}): " + GL.GetProgramInfoLog(handle));
             }
 
@@ -54,7 +52,6 @@ namespace Framework2D.Graphics
             GL.GetShader(shaderHandle, ShaderParameter.CompileStatus, out var code);
             if (code != (int)All.True)
             {
-                // We can use `GL.GetShaderInfoLog(shader)` to get information about the error.
                 var infoLog = GL.GetShaderInfoLog(shaderHandle);
                 throw new Exception($"Error occurred whilst compiling Shader({shaderHandle}).\n\n{infoLog}");
             }

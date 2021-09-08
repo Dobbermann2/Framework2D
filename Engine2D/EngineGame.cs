@@ -8,6 +8,7 @@ namespace Engine2D
     public class EngineGame : Game
     {
         public Scene Scene { get; private set;}
+
         public EngineGame(int width, int height, string title) : base(width, height, title)
         {
             Scene = new Scene();

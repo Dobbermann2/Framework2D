@@ -11,13 +11,7 @@ namespace SandboxGame
     class MainGame : Game
     {
 
-        Texture2D spritesheet;
-
-        SubTexture2D grassTile;
-        SubTexture2D trashTile;
-
         Texture2D texA;
-        List<Texture2D> tex = new List<Texture2D>();
         public MainGame() : base(1280, 720, "Title")
         {
 
@@ -25,13 +19,7 @@ namespace SandboxGame
 
         public override void Initialize()
         {
-            //spritesheet = new Texture2D("tilemap_packed.png");
-            //grassTile = new SubTexture2D(spritesheet, new TextureRegion(16, 16, 16, 16));
-            //trashTile = new SubTexture2D(spritesheet, new TextureRegion(128, 144, 16, 16));
-            for(int i = 0; i < 45; i++)
-            {
-                tex.Add(AssetManager.LoadTexture2D("textureA.png"));
-            }
+            texA = AssetManager.LoadTexture2D("textureA.png");
         }
 
         Vector3 camPos;
@@ -68,8 +56,7 @@ namespace SandboxGame
             {
                 for (int y = 0; y < 100; y++)
                 {
-                    batchRenderer.Draw(tex[1], new OpenTK.Mathematics.Vector2(x * 256, y * 256), new Vector2(1f), 0, new Vector2(0.5f)) ;
-
+                    batchRenderer.Draw(texA, new OpenTK.Mathematics.Vector2(x * 256, y * 256), new Vector2(1f), 0, new Vector2(0.5f)) ;
                 }
             }
             batchRenderer.End();

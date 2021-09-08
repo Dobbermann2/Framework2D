@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Framework2D.Extensions
 {
-    //TODO: Move to engine
+    //TODO: Move to engine.
     class ParticleSystem
     {
 

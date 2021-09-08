@@ -8,11 +8,13 @@ namespace Engine2D
     {
         public static Dictionary<string, ScriptAsset> scriptAssets = new Dictionary<string, ScriptAsset>();
 
+
         public static ScriptAsset GetScript(string path)
         {
-            if (scriptAssets.ContainsKey(path))
+            ScriptAsset script = null;
+            if (scriptAssets.TryGetValue(path, out script))
             {
-                return scriptAssets[path];
+                return script;
             }
             else
             {

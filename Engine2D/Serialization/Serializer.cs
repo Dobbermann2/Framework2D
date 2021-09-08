@@ -32,9 +32,9 @@ namespace Engine2D.Serialization
         {
             scene.Clear();
             string json = File.ReadAllText("save.txt");
-            JObject obj = JObject.Parse(json);
+            JObject jObject = JObject.Parse(json);
 
-            foreach (var x in obj)
+            foreach (var x in jObject)
             {
                 DeserializeComponent(x.Key, (JObject) x.Value, scene);
             }
@@ -62,7 +62,5 @@ namespace Engine2D.Serialization
                     break;
             }
         }
-
-
     }
 }

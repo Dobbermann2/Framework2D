@@ -9,6 +9,5 @@
         public abstract void OnCreate();
         public abstract void OnUpdate(float deltaTime);
         //public abstract void OnRender();
-
     }
 }

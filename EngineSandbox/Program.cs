@@ -19,15 +19,17 @@ namespace EngineSandbox
         {
 
         }
-        Entity e;
 
         public override void Initialize()
         {
-            e = Scene.CreateEntity();
-            SpriteComponent spriteComp = e.AddComponent<SpriteComponent>();
+            Entity player = Scene.CreateEntity();
+
+            player.AddComponent<TagComponent>().Tag = "Player";
+
+            SpriteComponent spriteComp = player.AddComponent<SpriteComponent>();
             spriteComp.Texture = AssetManager.LoadTexture2D("textureA.png");
 
-            e.AddComponent<ScriptComponent>().SetScript("PlayerController.cs");
+            player.AddComponent<ScriptComponent>().SetScript("PlayerController.cs");
         }
     }
 }

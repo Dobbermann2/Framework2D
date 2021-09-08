@@ -10,6 +10,7 @@ namespace Engine2D.Physics
     public static class Physics2D
     {
         private static ChipmunkSharp.cpSpace world;
+
         public static void Init(float gravity = 9.81f)
         {
             world = new ChipmunkSharp.cpSpace();

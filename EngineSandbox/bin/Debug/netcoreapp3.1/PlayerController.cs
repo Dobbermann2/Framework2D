@@ -12,9 +12,6 @@ namespace EngineSandbox
 {
     class PlayerController : GameScript
     {
-
-        float speed = 100f;
-
         public override void OnCreate()
         {
             
@@ -23,34 +20,8 @@ namespace EngineSandbox
         public override void OnUpdate(float deltaTime)
         {
             Vector2 position = Transform.Position;
-            if (Input.IsKeyDown(Key.A))
-            {
-                position.X -= speed * deltaTime;
-            }
-            if (Input.IsKeyDown(Key.D))
-            {
-                position.X += speed * deltaTime;
-            }
-            if (Input.IsKeyDown(Key.W))
-            {
-                position.Y -= speed * deltaTime;
-            }
-            if (Input.IsKeyDown(Key.S))
-            {
-                position.Y += speed * deltaTime;
-            }
+            position.X += 100 * deltaTime;
             Transform.Position = position;
-
-            if (Input.IsKeyDown(Key.Space))
-            {
-                Serializer.SerializeScene(Scene);
-            }
-
-            if(Input.IsKeyDown( Key.Enter))
-            {
-                Serializer.DeserializeScene(Scene);
-            }
-
         }
     }
 }

@@ -26,9 +26,12 @@ namespace Engine2D {
             this.SourcePath = sourcePath;
         }
 
+
+        //TODO: Clean up
         public bool Compile()
         {
             string source = "";
+
             try { 
                 source = File.ReadAllText(SourcePath);
             }
@@ -47,9 +50,8 @@ namespace Engine2D {
                 Path.Combine(Path.GetDirectoryName(typeof(Newtonsoft.Json.Linq.JObject).GetTypeInfo().Assembly.Location), "Newtonsoft.Json.dll"),
                 Path.Combine(Path.GetDirectoryName(typeof(OpenTK.Core.Utils).GetTypeInfo().Assembly.Location), "OpenTK.Core.dll"),
                 Path.Combine(Path.GetDirectoryName(typeof(OpenTK.Mathematics.Vector3).GetTypeInfo().Assembly.Location), "OpenTK.Mathematics.dll"),
-
-
             };
+
             MetadataReference[] references = refPaths.Select(r => MetadataReference.CreateFromFile(r)).ToArray();
             List<MetadataReference> rf = references.ToList();
             Assembly.GetEntryAssembly().GetReferencedAssemblies().ToList().ForEach(a => rf.Add(MetadataReference.CreateFromFile(Assembly.Load(a).Location)));
@@ -61,8 +63,6 @@ namespace Engine2D {
                 references: rf.ToArray(),
                 options: new CSharpCompilationOptions( Microsoft.CodeAnalysis.OutputKind.DynamicallyLinkedLibrary));
 
-            
-           
             using(MemoryStream ms = new MemoryStream())
             {
                 EmitResult result = compilation.Emit(ms);
@@ -101,10 +101,6 @@ namespace Engine2D {
                     return true;
                 }
             }
-
-
         }
-
-
     }
 }
