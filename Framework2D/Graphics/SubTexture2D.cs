@@ -15,6 +15,12 @@ namespace Framework2D.Graphics
             get;
             private set;
         }
+
+        public Vector2 Size
+        {
+            get; set;
+        }
+
         
         public SubTexture2D(Texture2D texture, TextureRegion textureRegion)
         {
@@ -22,6 +28,8 @@ namespace Framework2D.Graphics
             this.Texture = texture;
             Vector2[] texCoords = GenerateTexCoords();
             TexCoords = texCoords;
+
+            Size = (TexCoords[2] - TexCoords[0]) * Texture.Size;
         }
 
         private Vector2[] GenerateTexCoords()

@@ -63,7 +63,8 @@ namespace Framework2D.Graphics
                     new Vector2(1f, 0.0f),
                     new Vector2(1f, 1f),
                     new Vector2(0.0f, 1f),
-                }
+                },
+                Size = texture.Size
             };
             SubmitBatchItem(item);
         }
@@ -92,7 +93,8 @@ namespace Framework2D.Graphics
                 Scale = scale,
                 Angle = angle,
                 Origin = origin,
-                TexCoords = texture.TexCoords
+                TexCoords = texture.TexCoords,
+                Size = texture.Size,
             };
 
             SubmitBatchItem(item);

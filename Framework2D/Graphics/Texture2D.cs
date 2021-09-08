@@ -25,10 +25,12 @@ namespace Framework2D.Graphics
 
         Vector2 size;
 
+        public string Source { get; set; }
+
         public Texture2D(string source)
         {
             //Load texture
-
+            this.Source = source;
             Bitmap bitmap = new Bitmap(source);
 
             int width = bitmap.Width;

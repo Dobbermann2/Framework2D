@@ -3,9 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Framework2D", "Framework2D\Framework2D.csproj", "{769C1341-8FD8-4E92-9465-842C42E37B81}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Framework2D", "Framework2D\Framework2D.csproj", "{769C1341-8FD8-4E92-9465-842C42E37B81}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SandboxGame", "SandboxGame\SandboxGame.csproj", "{EE483074-5D0F-4417-8667-0D77700B7C74}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SandboxGame", "SandboxGame\SandboxGame.csproj", "{EE483074-5D0F-4417-8667-0D77700B7C74}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine2D", "Engine2D\Engine2D.csproj", "{E1F49DDD-E3F5-401F-B98C-5796A0B1F68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EngineSandbox", "EngineSandbox\EngineSandbox.csproj", "{DC9D7526-BAD6-428E-8884-0A458A740E91}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +25,14 @@ Global
 		{EE483074-5D0F-4417-8667-0D77700B7C74}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EE483074-5D0F-4417-8667-0D77700B7C74}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EE483074-5D0F-4417-8667-0D77700B7C74}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E1F49DDD-E3F5-401F-B98C-5796A0B1F68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1F49DDD-E3F5-401F-B98C-5796A0B1F68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1F49DDD-E3F5-401F-B98C-5796A0B1F68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1F49DDD-E3F5-401F-B98C-5796A0B1F68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC9D7526-BAD6-428E-8884-0A458A740E91}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC9D7526-BAD6-428E-8884-0A458A740E91}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC9D7526-BAD6-428E-8884-0A458A740E91}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC9D7526-BAD6-428E-8884-0A458A740E91}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -14,15 +14,7 @@ namespace Framework2D.Graphics
         public Vector2 Origin { get; set; }
         public Vector2[] TexCoords { get; set; }
 
-        public Vector2 Size
-        {
-            get
-            {
-                if(Texture != null)
-                return (TexCoords[2] * Texture.Size - TexCoords[0] * Texture.Size) * Scale;
-                return Vector2.Zero;
-            }
-        }
+        public Vector2 Size { get; set; }
 
         public Matrix4 TransformMatrix
         {

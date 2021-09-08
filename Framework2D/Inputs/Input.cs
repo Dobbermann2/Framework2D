@@ -129,5 +129,7 @@ namespace Framework2D.Inputs
         Left= (int)Keys.Left,
         Right= (int)Keys.Right,
 
+        Enter = (int)Keys.Enter
+
     }
 }

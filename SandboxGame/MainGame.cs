@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Framework2D;
+using Framework2D.Assets;
 using Framework2D.Graphics;
 using Framework2D.Inputs;
 using OpenTK.Mathematics;
@@ -16,7 +17,7 @@ namespace SandboxGame
         SubTexture2D trashTile;
 
         Texture2D texA;
-
+        List<Texture2D> tex = new List<Texture2D>();
         public MainGame() : base(1280, 720, "Title")
         {
 
@@ -24,11 +25,13 @@ namespace SandboxGame
 
         public override void Initialize()
         {
-            spritesheet = new Texture2D("tilemap_packed.png");
-            grassTile = new SubTexture2D(spritesheet, new TextureRegion(16, 16, 16, 16));
-            trashTile = new SubTexture2D(spritesheet, new TextureRegion(128, 144, 16, 16));
-
-            texA = new Texture2D("textureA.png");
+            //spritesheet = new Texture2D("tilemap_packed.png");
+            //grassTile = new SubTexture2D(spritesheet, new TextureRegion(16, 16, 16, 16));
+            //trashTile = new SubTexture2D(spritesheet, new TextureRegion(128, 144, 16, 16));
+            for(int i = 0; i < 45; i++)
+            {
+                tex.Add(AssetManager.LoadTexture2D("textureA.png"));
+            }
         }
 
         Vector3 camPos;
@@ -50,6 +53,11 @@ namespace SandboxGame
             {
                 camPos.Y += 100 * deltaTime;
             }
+
+            if (Input.IsKeyDown(Key.Space))
+            {
+                Console.WriteLine(deltaTime * 1000 + "ms" + " / " + 1 / deltaTime + " fps");
+            }
             base.Update(deltaTime);
         }
 
@@ -60,7 +68,7 @@ namespace SandboxGame
             {
                 for (int y = 0; y < 100; y++)
                 {
-                    batchRenderer.Draw(grassTile, new OpenTK.Mathematics.Vector2(x * 256, y * 256), new Vector2(4f), 0, new Vector2(0.5f));
+                    batchRenderer.Draw(tex[1], new OpenTK.Mathematics.Vector2(x * 256, y * 256), new Vector2(1f), 0, new Vector2(0.5f)) ;
 
                 }
             }
@@ -75,6 +83,7 @@ namespace SandboxGame
         static public void Main(String[] args)
         {
             MainGame m = new MainGame();
+            m.Run();
         }
     }
 }

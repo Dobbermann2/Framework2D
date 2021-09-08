@@ -1,0 +1,14 @@
+{
+  "TransformComponent": {
+    "eID": 1,
+    "pX": 71.14052,
+    "pY": 123.09726,
+    "sX": 1.0,
+    "sY": 1.0,
+    "R": 0.0
+  },
+  "SpriteComponent": {
+    "eID": 1,
+    "texS": "textureA.png"
+  }
+}
